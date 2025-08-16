@@ -2,18 +2,15 @@ import React, { createContext, useState, useMemo } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 
-// Create Theme Context
 export const ThemeContext = createContext();
 
 export const ThemeContextProvider = ({ children }) => {
-  const [mode, setMode] = useState("dark"); // Default to dark for cinematic vibe
+  const [mode, setMode] = useState("dark");
 
-  // Toggle theme
   const toggleTheme = () => {
     setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
   };
 
-  // Create MUI theme based on mode
   const theme = useMemo(
     () =>
       createTheme({
@@ -21,15 +18,32 @@ export const ThemeContextProvider = ({ children }) => {
           mode,
           ...(mode === "light"
             ? {
-                primary: { main: "#1976d2" }, // Blue for buttons
-                background: { default: "#f5f5f5", paper: "#ffffff" },
-                text: { primary: "#000000", secondary: "#555555" },
+                primary: { main: "#b71c1c" }, // Cinematic red
+                secondary: { main: "#0288d1" }, // Blue accent
+                background: { default: "#fafafa", paper: "#ffffff" },
+                text: { primary: "#212121", secondary: "#757575" },
               }
             : {
-                primary: { main: "#90caf9" }, // Lighter blue for dark mode
-                background: { default: "#121212", paper: "#1e1e1e" }, // Cinematic dark
-                text: { primary: "#ffffff", secondary: "#bbbbbb" },
+                primary: { main: "#ef5350" }, // Vibrant red
+                secondary: { main: "#4fc3f7" }, // Neon blue
+                background: { default: "#0a0a0a", paper: "#1c2526" }, // Dark cinematic
+                text: { primary: "#ffffff", secondary: "#b0bec5" },
               }),
+        },
+        typography: {
+          fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+          h4: { fontWeight: 700 }, // Bolder titles
+          button: { textTransform: "none" }, // Modern buttons
+        },
+        components: {
+          MuiButton: {
+            styleOverrides: {
+              root: {
+                borderRadius: 8,
+                padding: "8px 16px",
+              },
+            },
+          },
         },
       }),
     [mode]
@@ -38,7 +52,7 @@ export const ThemeContextProvider = ({ children }) => {
   return (
     <ThemeContext.Provider value={{ mode, toggleTheme }}>
       <ThemeProvider theme={theme}>
-        <CssBaseline /> {/* Normalizes styles across browsers */}
+        <CssBaseline />
         {children}
       </ThemeProvider>
     </ThemeContext.Provider>

@@ -44,7 +44,7 @@ const Login = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        minHeight: "80vh",
+
         bgcolor: "background.default",
         p: 2,
       }}

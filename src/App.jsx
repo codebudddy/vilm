@@ -12,14 +12,6 @@ import ScriptRecorder from "./components/ScriptRecorder";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 
-console.log("Firebase Config:", {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-});
 const ProtectedRoute = ({ children }) => {
   const { currentUser, loading } = useContext(AuthContext);
   if (loading) return <Typography>Loading...</Typography>;
@@ -35,7 +27,7 @@ const AppContent = () => {
     <Container maxWidth="sm" sx={{ py: 4 }}>
       <Stack spacing={4}>
         <Typography variant="h4" align="center">
-          VILM
+          Vilm Studio
         </Typography>
         <Stack direction="row" spacing={2} sx={{ justifyContent: "center" }}>
           <Button variant="outlined" onClick={toggleTheme}>
