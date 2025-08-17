@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ThemeContext, ThemeContextProvider } from "./context/ThemeContext";
+import { ThemeContextProvider } from "./context/ThemeContext";
 import { AuthContext, AuthContextProvider } from "./context/AuthContext";
 import {
   BrowserRouter as Router,
@@ -7,7 +7,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { Container, Stack, Typography, Button } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import ScriptRecorder from "./components/Studio";
@@ -22,9 +22,6 @@ const ProtectedRoute = ({ children }) => {
 };
 
 const AppContent = () => {
-  const { mode, toggleTheme } = useContext(ThemeContext);
-  const { currentUser, logout } = useContext(AuthContext);
-
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
       <Header />
