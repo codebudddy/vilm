@@ -44,7 +44,7 @@ const Login = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-
+        minHeight: "70vh",
         bgcolor: "background.default",
         p: 2,
       }}
@@ -57,6 +57,7 @@ const Login = () => {
           boxShadow: 3,
           maxWidth: 400,
           width: "100%",
+          height: "100%",
         }}
       >
         <Stack spacing={2}>

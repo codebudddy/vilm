@@ -8,7 +8,9 @@ import {
   Navigate,
 } from "react-router-dom";
 import { Container, Stack, Typography, Button } from "@mui/material";
-import ScriptRecorder from "./components/ScriptRecorder";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import ScriptRecorder from "./components/Studio";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 
@@ -24,34 +26,21 @@ const AppContent = () => {
   const { currentUser, logout } = useContext(AuthContext);
 
   return (
-    <Container maxWidth="sm" sx={{ py: 4 }}>
-      <Stack spacing={4}>
-        <Typography variant="h4" align="center">
-          Vilm Studio
-        </Typography>
-        <Stack direction="row" spacing={2} sx={{ justifyContent: "center" }}>
-          <Button variant="outlined" onClick={toggleTheme}>
-            Switch to {mode === "light" ? "Dark" : "Light"} Mode
-          </Button>
-          {currentUser && (
-            <Button variant="outlined" onClick={logout}>
-              Sign Out
-            </Button>
-          )}
-        </Stack>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <ScriptRecorder />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
-      </Stack>
+    <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Hero />} />
+        <Route
+          path="/studio"
+          element={
+            <ProtectedRoute>
+              <ScriptRecorder />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
     </Container>
   );
 };
